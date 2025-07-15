@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import os 
 from dotenv import load_dotenv
 import requests
+import urllib.parse as up
 
 def fetch_book_info(google_books_id):
     url = f"https://www.googleapis.com/books/v1/volumes/{google_books_id}"
@@ -20,14 +21,10 @@ GOOGLE_BOOKS_API_KEY = os.getenv("GOOGLE_BOOKS_API_KEY")
 # In-memory book list to start (we'll use a database later)
 books = []
 
+up.uses_netloc.append("postgres")
+DATABASE_URL = os.environ.get("DATABASE_URL")
 def get_db_connection():
-    conn = psycopg2.connect(
-        host="localhost",
-        database="postgres",
-        user="postgres",
-        password="root",
-        port="5432"
-    )
+    conn = psycopg2.connect(DATABASE_URL)
     return conn
 
 @app.route("/")
