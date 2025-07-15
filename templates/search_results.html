@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results for "{{ query }}"</h1>
+    <a href="/">← Back to Reading List</a>
+    <ul style="list-style: none; padding: 0;">
+        {% for book in books %}
+            <li style="display: flex; gap: 1rem; margin-bottom: 1rem; align-items: flex-start;">
+                {% if book.volumeInfo.imageLinks and book.volumeInfo.imageLinks.thumbnail %}
+                    <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="Book Cover" style="height: 100px;">
+                {% endif %}
+
+                <div style="flex: 1;">
+                    <strong>{{ book.volumeInfo.title }}</strong><br>
+                    {% if book.volumeInfo.authors %}
+                        <em>by {{ book.volumeInfo.authors | join(', ') }}</em><br>
+                    {% endif %}
+                    {% if book.volumeInfo.description %}
+                        <p>{{ book.volumeInfo.description[:200] }}...</p>
+                    {% endif %}
+                    {% if book.volumeInfo.infoLink %}
+                        <a href="{{ book.volumeInfo.infoLink }}" target="_blank">More Info</a>
+                    {% endif %}
+                </div>
+
+                <!-- ✅ Add to Reading List Form -->
+                <form method="POST" action="/add">
+                    <input type="hidden" name="google_books_id" value="{{ book.id }}">
+                    <input type="hidden" name="status" value="To Read">
+                    <button type="submit" style="
+                        width: 150px;
+                        height: 40px;
+                        background-color: #4CAF50;
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    ">➕ Add</button>
+                </form>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+</body>
+</html>

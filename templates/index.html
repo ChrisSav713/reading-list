@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reading List</title>
+</head>
+<body>
+  <h1>My Reading List</h1>
+  <form method="GET" action="/search">
+    <input type="text" name="query" placeholder="Search Google Books" required>
+    <button type="submit">Search</button>
+  </form>
+<ul style="list-style: none; padding: 0;">
+    {% for book in books %}
+        <li style="display: flex; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #ccc; padding-bottom: 1rem; align-items: flex-start;">
+
+            <!-- Book cover -->
+            <img src="https://books.google.com/books/content?id={{ book.google_books_id }}&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                 alt="Book Cover"
+                 style="height: 100px; width: auto;">
+
+            <!-- Book details -->
+            <div style="flex: 1;">
+                <strong style="font-size: 1.2rem;">{{ book.title }}</strong><br>
+                {% if book.author %}
+                    <em>by {{ book.author }}</em><br>
+                {% endif %}
+                <span>Status: <strong>{{ book.status }}</strong></span>
+            </div>
+
+            <!-- Actions -->
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <a href="{{ url_for('edit', id=book.id) }}" style="text-decoration: none; padding: 0.5rem; background-color: #f0f0f0; border-radius: 4px; text-align: center;">✏️ Edit</a>
+                <a href="{{ url_for('delete', id=book.id) }}" style="text-decoration: none; padding: 0.5rem; background-color: #ffe6e6; border-radius: 4px; text-align: center;">🗑️ Delete</a>
+            </div>
+
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>

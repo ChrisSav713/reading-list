@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Book</title>
+</head>
+<body>
+    <h1>Edit Book</h1>
+    <form method="post">
+        Title: <input name="title" value="{{ book[0] }}"><br>
+        Author: <input name="author" value="{{ book[1] }}"><br>
+        Status: <input name="status" value="{{ book[2] }}"><br>
+        <button type="submit">Save</button>
+    </form>
+    <a href="{{ url_for('index') }}">⬅️ Back</a>
+</body>
+</html>
