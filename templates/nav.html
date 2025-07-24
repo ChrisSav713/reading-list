@@ -1,0 +1,17 @@
+<header class="navbar">
+  <div class="nav-section-left">
+    <a href="{{ url_for('home') }}" class="logo">📚</a>
+  </div>
+  
+  <div class="nav-title">My Reading List</div>
+  
+  <nav class="nav-section-right">
+    {% if session.get('user_id') %}
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+      <a href="{{ url_for('signup') }}">Sign Up</a>
+      <a href="{{ url_for('login') }}">Log In</a>
+    {% endif %}
+  </nav>
+</header>

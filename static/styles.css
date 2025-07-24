@@ -1,0 +1,240 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Seachbar for reading list */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 20px;
+  text-align: center;
+}
+
+.search-prompt {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.search-input {
+  width: 300px;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.search-button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.search-button:hover {
+  background-color: #555;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+}
+
+.nav-section-left,
+.nav-section-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  flex: 1;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+nav a:hover {
+  background-color: #444;
+  color: #fff;
+}
+
+.flash.success {
+  color: green;
+}
+.flash.danger {
+  color: red;
+}
+.flash.info {
+  color: blue;
+}
+
+/* Reading list book cards */
+.book-card {
+  display: flex;
+  align-items: flex-start; /* Aligns top edges */
+  justify-content: flex-start;
+  gap: 20px; /* You can reduce this to 10px if too wide */
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.book-cover {
+  width: 80px;
+  height: auto;
+  border-radius: 4px;
+  flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.book-info h3 {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* <- This left-aligns all text */
+}
+
+.book-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.book-info p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.book-content-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.book-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.button {
+  padding: 6px 10px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  white-space: nowrap;
+  width: 80px;
+}
+
+.button.edit {
+  /* background-color: #e0f7fa; */
+  /* color: #00796b; */
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+.button.delete {
+  /* background-color: #ffebee; */
+  /* color: #c62828; */
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+/* Signup and login forms */
+.form-container {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: #f8f8f8;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container label {
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  color: #444;
+}
+
+.form-container input {
+  margin-bottom: 1rem;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-container button {
+  padding: 0.7rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.form-container button:hover {
+  background-color: #555;
+}
+
+.form-note {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.form-note a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.form-note a:hover {
+  text-decoration: underline;
+}

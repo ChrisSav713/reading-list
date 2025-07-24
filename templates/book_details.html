@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Book Details{% endblock %}
+
+{% block content %}
+  <h2>{{ book.title }}</h2>
+  <p><strong>Authors:</strong> {{ ", ".join(book.authors or []) }}</p>
+  <p><strong>Publisher:</strong> {{ book.publisher or "Unknown" }}</p>
+  <p><strong>Published Date:</strong> {{ book.publishedDate or "Unknown" }}</p>
+  <p><strong>Page Count:</strong> {{ book.pageCount or "N/A" }}</p>
+  <p><strong>Categories:</strong> {{ ", ".join(book.categories or []) }}</p>
+  <p><strong>Average Rating:</strong> {{ book.averageRating or "N/A" }}</p>
+  <p><strong>Description:</strong></p>
+  <p>{{ book.description or "No description available." }}</p>
+
+  {% if book.imageLinks %}
+    <img src="{{ book.imageLinks.thumbnail }}" alt="Book cover">
+  {% endif %}
+
+  <form action="{{ url_for('save_book', google_books_id=id) }}" method="POST">
+    <label for="status">Status:</label>
+     <select name="status">
+        <option value="to-read">To Read</option>
+        <option value="reading">Reading</option>
+        <option value="completed">Completed</option>
+    </select>
+    <button type="submit">📚 Save to Reading List</button>
+    </form>
+
+  <p><a href="{{ url_for('search_books', query=book.title) }}">Back to Search</a></p>
+{% endblock %}
